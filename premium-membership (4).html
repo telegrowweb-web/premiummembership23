@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premium Membership | VIP Members Only</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b0a12;
+      --card: #13111f;
+      --card-border: #2a2438;
+      --accent: #a855f7;
+      --accent-hover: #c084fc;
+      --gold: #fbbf24;
+      --text: #f3e8ff;
+      --muted: #a1a1aa;
+      --gradient: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #c084fc 100%);
+      --plan-bg: linear-gradient(90deg, #1e1533 0%, #2a1f45 100%);
+      --plan-border: #3b2d5c;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    /* Subtle background animation */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 40%, rgba(168, 85, 247, 0.08) 0%, transparent 40%),
+                  radial-gradient(circle at 70% 60%, rgba(251, 191, 36, 0.05) 0%, transparent 35%);
+      animation: bgPulse 12s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    @keyframes bgPulse {
+      0% { transform: scale(1) rotate(0deg); opacity: 0.7; }
+      100% { transform: scale(1.1) rotate(5deg); opacity: 1; }
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--card-border);
+      background: rgba(11, 10, 18, 0.9);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      animation: slideDown 0.6s ease-out;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #fff;
+      box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 12px rgba(168, 85, 247, 0.35); }
+      50% { box-shadow: 0 0 22px rgba(168, 85, 247, 0.6); }
+    }
+
+    .sign-in {
+      background: transparent;
+      border: 1px solid var(--card-border);
+      color: var(--text);
+      padding: 0.5rem 1.2rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .sign-in:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(168, 85, 247, 0.1);
+    }
+
+    /* Main layout */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    @media (max-width: 860px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Left panel */
+    .left-panel {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      animation: fadeInLeft 0.7s ease-out;
+    }
+
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .created-by {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: #1c1729;
+      border: 1px solid #332b4a;
+      border-radius: 12px;
+      padding: 0.9rem 1.1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .created-by .icon {
+      width: 40px;
+      height: 40px;
+      background: var(--gradient);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #fff;
+      font-size: 0.85rem;
+    }
+
+    .created-by .text small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+
+    .created-by .text strong {
+      color: var(--gold);
+      font-size: 0.95rem;
+    }
+
+    .section-title {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+
+    .tags {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .tag {
+      background: #1c1729;
+      border: 1px solid #332b4a;
+      color: var(--text);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.2s;
+    }
+
+    .tag:hover {
+      border-color: var(--accent);
+      background: rgba(168, 85, 247, 0.1);
+    }
+
+    .disclaimer {
+      background: #16131f;
+      border: 1px solid #2a2438;
+      border-radius: 12px;
+      padding: 1.2rem;
+    }
+
+    .disclaimer h4 {
+      font-size: 0.95rem;
+      margin-bottom: 0.6rem;
+      color: #fff;
+    }
+
+    .disclaimer p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .disclaimer a {
+      color: var(--accent);
+      text-decoration: underline;
+      font-size: 0.82rem;
+    }
+
+    /* Right panel */
+    .right-panel {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 2rem 1.75rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInRight 0.7s ease-out;
+    }
+
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .vip-badge {
+      width: 95px;
+      height: 95px;
+      margin: 0 auto 1.25rem;
+      background: radial-gradient(circle at center, #2a1f45 0%, #13111f 70%);
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 30px rgba(251, 191, 36, 0.3);
+      animation: badgeGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes badgeGlow {
+      0%, 100% { box-shadow: 0 0 25px rgba(251, 191, 36, 0.25); transform: scale(1); }
+      50% { box-shadow: 0 0 40px rgba(251, 191, 36, 0.45); transform: scale(1.03); }
+    }
+
+    .vip-badge .vip {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+
+    .vip-badge .sub {
+      font-size: 0.55rem;
+      color: #aaa;
+      letter-spacing: 0.5px;
+      margin-top: 2px;
+    }
+
+    .right-panel h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .right-panel .subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1.75rem;
+    }
+
+    .plans {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .plan {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--plan-bg);
+      border: 1px solid var(--plan-border);
+      border-radius: 12px;
+      padding: 1.05rem 1.25rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .plan::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.15), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .plan:hover::before {
+      left: 100%;
+    }
+
+    .plan:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px) scale(1.01);
+      box-shadow: 0 10px 30px rgba(168, 85, 247, 0.25);
+    }
+
+    .plan .left {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .plan .radio {
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+      transition: all 0.25s;
+    }
+
+    .plan:hover .radio {
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+    }
+
+    .plan .name {
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    .plan .price {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all 0.25s;
+    }
+
+    .plan:hover .price {
+      background: rgba(168, 85, 247, 0.25);
+    }
+
+    .plan .arrow {
+      font-size: 1.1rem;
+      opacity: 0.7;
+      transition: transform 0.25s;
+    }
+
+    .plan:hover .arrow {
+      transform: translateX(4px);
+      opacity: 1;
+    }
+
+    /* Staggered animation for plans */
+    .plan:nth-child(1) { animation: fadeUp 0.5s ease-out 0.2s both; }
+    .plan:nth-child(2) { animation: fadeUp 0.5s ease-out 0.35s both; }
+    .plan:nth-child(3) { animation: fadeUp 0.5s ease-out 0.5s both; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Secure note */
+    .secure {
+      text-align: center;
+      margin-top: 2rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      animation: fadeIn 1s ease-out 0.6s both;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .payment-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 0.75rem;
+    }
+
+    .payment-icons span {
+      width: 36px;
+      height: 36px;
+      background: #1c1729;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      transition: transform 0.2s;
+    }
+
+    .payment-icons span:hover {
+      transform: scale(1.15);
+    }
+
+    /* Decorative glow */
+    .glow {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+      top: -70px;
+      right: -50px;
+      pointer-events: none;
+      animation: glowMove 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes glowMove {
+      from { transform: translate(0, 0); }
+      to { transform: translate(-20px, 15px); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <div class="logo-icon">VIP</div>
+      <span>Premium Membership</span>
+    </div>
+    <button class="sign-in">Sign in</button>
+  </header>
+
+  <div class="container">
+    <!-- Left Panel -->
+    <div class="left-panel">
+      <div class="created-by">
+        <div class="icon">VIP</div>
+        <div class="text">
+          <small>Created by</small>
+          <strong>Premium Membership</strong>
+        </div>
+      </div>
+
+      <div class="section-title">About the offering</div>
+      <div class="tags">
+        <span class="tag">📚 Education</span>
+        <span class="tag">⚡ 3 Plans</span>
+      </div>
+
+      <div class="disclaimer">
+        <h4>Disclaimer</h4>
+        <p>
+          Premium Membership shall not be held liable for any content or materials published, sold, or
+          distributed by content creators on our associated apps or websites. We do not endorse or
+          take responsibility for the accuracy, legality, or quality of their content. Users must exercise
+          their own judgment and discretion when relying on such content. All liability for any losses
+          or damages incurred is disclaimed. By using our services, you agree to these terms.
+        </p>
+        <p style="margin-top: 0.6rem;">
+          <a href="#">Learn more</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="right-panel">
+      <div class="glow"></div>
+      
+      <div class="vip-badge">
+        <div class="vip">VIP</div>
+        <div class="sub">MEMBERS ONLY</div>
+      </div>
+
+      <h1>Premium Membership</h1>
+      <p class="subtitle">Select a plan and continue</p>
+
+      <div class="plans">
+        <!-- 1 Month -->
+        <a href="https://onetapay.com/pp/MzIyMA==" class="plan" target="_blank" rel="noopener">
+          <div class="left">
+            <div class="radio"></div>
+            <span class="name">1 Month</span>
+          </div>
+          <div class="price">
+            ₹2,999.00
+            <span class="arrow">→</span>
+          </div>
+        </a>
+
+        <!-- 3 Month -->
+        <a href="https://onetapay.com/pp/MzIyMQ==" class="plan" target="_blank" rel="noopener">
+          <div class="left">
+            <div class="radio"></div>
+            <span class="name">3 Month</span>
+          </div>
+          <div class="price">
+            ₹3,999.00
+            <span class="arrow">→</span>
+          </div>
+        </a>
+
+        <!-- Lifetime -->
+        <a href="https://onetapay.com/pp/MzIyMg==" class="plan" target="_blank" rel="noopener">
+          <div class="left">
+            <div class="radio"></div>
+            <span class="name">Lifetime</span>
+          </div>
+          <div class="price">
+            ₹4,999.00
+            <span class="arrow">→</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="secure">
+    Guaranteed safe & secure payment
+    <div class="payment-icons">
+      <span>💳</span>
+      <span>🔒</span>
+      <span>₹</span>
+    </div>
+  </div>
+</body>
+</html>
