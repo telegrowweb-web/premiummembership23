@@ -3,30 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Premium Membership | VIP Members Only</title>
+  <title>VIP Premium Member</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0b0a12;
-      --card: #13111f;
-      --card-border: #2a2438;
-      --accent: #a855f7;
-      --accent-hover: #c084fc;
-      --gold: #fbbf24;
-      --text: #f3e8ff;
-      --muted: #a1a1aa;
-      --gradient: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #c084fc 100%);
-      --plan-bg: linear-gradient(90deg, #1e1533 0%, #2a1f45 100%);
-      --plan-border: #3b2d5c;
+      --bg: #f0f2f5;
+      --card: #ffffff;
+      --text: #1a1a2e;
+      --text-muted: #6b7280;
+      --blue: #2563eb;
+      --green: #22c55e;
+      --orange: #f97316;
+      --purple: #a855f7;
+      --border: #e5e7eb;
+      --radius: 16px;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -34,390 +29,11 @@
       color: var(--text);
       min-height: 100vh;
       line-height: 1.5;
-      overflow-x: hidden;
     }
-
-    /* Subtle background animation */
-    body::before {
-      content: '';
-      position: fixed;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at 30% 40%, rgba(168, 85, 247, 0.08) 0%, transparent 40%),
-                  radial-gradient(circle at 70% 60%, rgba(251, 191, 36, 0.05) 0%, transparent 35%);
-      animation: bgPulse 12s ease-in-out infinite alternate;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    @keyframes bgPulse {
-      0% { transform: scale(1) rotate(0deg); opacity: 0.7; }
-      100% { transform: scale(1.1) rotate(5deg); opacity: 1; }
-    }
-
-    /* Header */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      border-bottom: 1px solid var(--card-border);
-      background: rgba(11, 10, 18, 0.9);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(14px);
-      animation: slideDown 0.6s ease-out;
-    }
-
-    @keyframes slideDown {
-      from { transform: translateY(-100%); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-
-    .logo-icon {
-      width: 36px;
-      height: 36px;
-      background: var(--gradient);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: #fff;
-      box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
-      animation: pulse 2.5s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 0 12px rgba(168, 85, 247, 0.35); }
-      50% { box-shadow: 0 0 22px rgba(168, 85, 247, 0.6); }
-    }
-
-    .sign-in {
-      background: transparent;
-      border: 1px solid var(--card-border);
-      color: var(--text);
-      padding: 0.5rem 1.2rem;
-      border-radius: 999px;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: all 0.25s ease;
-    }
-
-    .sign-in:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: rgba(168, 85, 247, 0.1);
-    }
-
-    /* Main layout */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 2.5rem 1.5rem 3rem;
-      display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap: 2.5rem;
-      align-items: start;
-    }
-
-    @media (max-width: 860px) {
-      .container {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Left panel */
-    .left-panel {
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 1.75rem;
-      animation: fadeInLeft 0.7s ease-out;
-    }
-
-    @keyframes fadeInLeft {
-      from { opacity: 0; transform: translateX(-30px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-
-    .created-by {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      background: #1c1729;
-      border: 1px solid #332b4a;
-      border-radius: 12px;
-      padding: 0.9rem 1.1rem;
-      margin-bottom: 1.75rem;
-    }
-
-    .created-by .icon {
-      width: 40px;
-      height: 40px;
-      background: var(--gradient);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      color: #fff;
-      font-size: 0.85rem;
-    }
-
-    .created-by .text small {
-      display: block;
-      color: var(--muted);
-      font-size: 0.75rem;
-    }
-
-    .created-by .text strong {
-      color: var(--gold);
-      font-size: 0.95rem;
-    }
-
-    .section-title {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 0.75rem;
-      font-weight: 500;
-    }
-
-    .tags {
-      display: flex;
-      gap: 0.6rem;
-      margin-bottom: 1.75rem;
-    }
-
-    .tag {
-      background: #1c1729;
-      border: 1px solid #332b4a;
-      color: var(--text);
-      padding: 0.35rem 0.85rem;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-      transition: all 0.2s;
-    }
-
-    .tag:hover {
-      border-color: var(--accent);
-      background: rgba(168, 85, 247, 0.1);
-    }
-
-    .disclaimer {
-      background: #16131f;
-      border: 1px solid #2a2438;
-      border-radius: 12px;
-      padding: 1.2rem;
-    }
-
-    .disclaimer h4 {
-      font-size: 0.95rem;
-      margin-bottom: 0.6rem;
-      color: #fff;
-    }
-
-    .disclaimer p {
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.55;
-    }
-
-    .disclaimer a {
-      color: var(--accent);
-      text-decoration: underline;
-      font-size: 0.82rem;
-    }
-
-    /* Right panel */
-    .right-panel {
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 2rem 1.75rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      animation: fadeInRight 0.7s ease-out;
-    }
-
-    @keyframes fadeInRight {
-      from { opacity: 0; transform: translateX(30px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-
-    .vip-badge {
-      width: 95px;
-      height: 95px;
-      margin: 0 auto 1.25rem;
-      background: radial-gradient(circle at center, #2a1f45 0%, #13111f 70%);
-      border: 2px solid var(--gold);
-      border-radius: 50%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 30px rgba(251, 191, 36, 0.3);
-      animation: badgeGlow 3s ease-in-out infinite;
-    }
-
-    @keyframes badgeGlow {
-      0%, 100% { box-shadow: 0 0 25px rgba(251, 191, 36, 0.25); transform: scale(1); }
-      50% { box-shadow: 0 0 40px rgba(251, 191, 36, 0.45); transform: scale(1.03); }
-    }
-
-    .vip-badge .vip {
-      font-size: 1.45rem;
-      font-weight: 800;
-      color: var(--gold);
-      letter-spacing: 1px;
-    }
-
-    .vip-badge .sub {
-      font-size: 0.55rem;
-      color: #aaa;
-      letter-spacing: 0.5px;
-      margin-top: 2px;
-    }
-
-    .right-panel h1 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
-    }
-
-    .right-panel .subtitle {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 1.75rem;
-    }
-
-    .plans {
-      display: flex;
-      flex-direction: column;
-      gap: 0.9rem;
-    }
-
-    .plan {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: var(--plan-bg);
-      border: 1px solid var(--plan-border);
-      border-radius: 12px;
-      padding: 1.05rem 1.25rem;
-      text-decoration: none;
-      color: var(--text);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .plan::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.15), transparent);
-      transition: left 0.5s ease;
-    }
-
-    .plan:hover::before {
-      left: 100%;
-    }
-
-    .plan:hover {
-      border-color: var(--accent);
-      transform: translateY(-3px) scale(1.01);
-      box-shadow: 0 10px 30px rgba(168, 85, 247, 0.25);
-    }
-
-    .plan .left {
-      display: flex;
-      align-items: center;
-      gap: 0.9rem;
-    }
-
-    .plan .radio {
-      width: 18px;
-      height: 18px;
-      border: 2px solid var(--accent);
-      border-radius: 50%;
-      flex-shrink: 0;
-      transition: all 0.25s;
-    }
-
-    .plan:hover .radio {
-      background: var(--accent);
-      box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
-    }
-
-    .plan .name {
-      font-weight: 600;
-      font-size: 1.05rem;
-    }
-
-    .plan .price {
-      background: rgba(0, 0, 0, 0.4);
-      padding: 0.4rem 1rem;
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-      transition: all 0.25s;
-    }
-
-    .plan:hover .price {
-      background: rgba(168, 85, 247, 0.25);
-    }
-
-    .plan .arrow {
-      font-size: 1.1rem;
-      opacity: 0.7;
-      transition: transform 0.25s;
-    }
-
-    .plan:hover .arrow {
-      transform: translateX(4px);
-      opacity: 1;
-    }
-
-    /* Staggered animation for plans */
-    .plan:nth-child(1) { animation: fadeUp 0.5s ease-out 0.2s both; }
-    .plan:nth-child(2) { animation: fadeUp 0.5s ease-out 0.35s both; }
-    .plan:nth-child(3) { animation: fadeUp 0.5s ease-out 0.5s both; }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(24px); }
       to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Secure note */
-    .secure {
-      text-align: center;
-      margin-top: 2rem;
-      color: var(--muted);
-      font-size: 0.85rem;
-      animation: fadeIn 1s ease-out 0.6s both;
     }
 
     @keyframes fadeIn {
@@ -425,147 +41,688 @@
       to { opacity: 1; }
     }
 
-    .payment-icons {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 0.75rem;
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.15); }
     }
 
-    .payment-icons span {
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 12px 40px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .logo {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .logo span { color: var(--orange); }
+
+    .secure-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #059669;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      padding: 7px 14px;
+      border-radius: 999px;
+    }
+
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+      animation: fadeUp 0.5s ease-out 0.1s both;
+    }
+
+    .trust-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 5px 11px;
+      border-radius: 999px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .trust-pill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    .plans-available {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 5px 12px;
+      border-radius: 999px;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    @media (max-width: 860px) {
+      .main-grid { grid-template-columns: 1fr; }
+      .trust-row { justify-content: flex-start; }
+    }
+
+    .left-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .hero-card {
+      background: linear-gradient(145deg, #1e40af 0%, #3b82f6 50%, #2563eb 100%);
+      border-radius: 20px;
+      padding: 28px 24px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      animation: scaleIn 0.6s ease-out both;
+      box-shadow: 0 12px 40px rgba(37, 99, 235, 0.3);
+    }
+
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -20%;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-card::after {
+      content: '';
+      position: absolute;
+      bottom: -20%;
+      left: -10%;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .created-by {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: #86efac;
+      background: rgba(34, 197, 94, 0.2);
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .vip-circle {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, rgba(255,255,255,0.25), rgba(255,255,255,0.08));
+      border: 2px solid rgba(255,255,255,0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      animation: float 3s ease-in-out infinite;
+      backdrop-filter: blur(4px);
+    }
+
+    .vip-circle .vip-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      opacity: 0.9;
+      line-height: 1.2;
+      text-align: center;
+    }
+
+    .edu-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: white;
+      background: rgba(255,255,255,0.2);
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .live-members {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(0,0,0,0.2);
+      border-radius: 12px;
+      padding: 10px 18px;
+      font-size: 0.8rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    .live-members strong {
+      color: #86efac;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .desc-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+      animation: fadeUp 0.5s ease-out 0.2s both;
+      transition: box-shadow 0.25s;
+    }
+
+    .desc-card:hover {
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    }
+
+    .desc-card h3 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--text-muted);
+    }
+
+    .desc-card h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .desc-card p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .desc-card a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .desc-card a:hover { text-decoration: underline; }
+
+    .payment-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      border: 1px solid var(--border);
+      text-align: center;
+      animation: fadeUp 0.5s ease-out 0.3s both;
+    }
+
+    .payment-card .label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .payment-card .label span.safe { color: var(--green); font-weight: 600; }
+    .payment-card .label span.secure { color: var(--orange); font-weight: 600; }
+
+    .payment-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .pay-icon {
+      background: #f9fafb;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 5px 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .pay-icon:hover {
+      transform: translateY(-2px);
+      border-color: #93c5fd;
+    }
+
+    .plans-section {
+      animation: fadeUp 0.55s ease-out 0.15s both;
+    }
+
+    .plans-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .plans-header h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .plan-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      position: relative;
+      animation: fadeUp 0.5s ease-out both;
+    }
+
+    .plan-card:nth-child(2) { animation-delay: 0.2s; }
+    .plan-card:nth-child(3) { animation-delay: 0.3s; }
+    .plan-card:nth-child(4) { animation-delay: 0.4s; }
+
+    .plan-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+      border-color: #c7d2fe;
+    }
+
+    .plan-card.popular {
+      border-color: #fdba74;
+      background: linear-gradient(135deg, #fff7ed 0%, #faf5ff 100%);
+      box-shadow: 0 4px 20px rgba(249, 115, 22, 0.1);
+    }
+
+    .plan-card.popular:hover {
+      box-shadow: 0 10px 32px rgba(249, 115, 22, 0.18);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #f97316, #a855f7);
+      background-size: 200% auto;
+      animation: shimmer 3s linear infinite;
+      color: white;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      padding: 3px 14px;
+      border-radius: 999px;
+      white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(249, 115, 22, 0.35);
+    }
+
+    .plan-info h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .plan-price {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+    }
+
+    .plan-price span {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .plan-members {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .plan-members .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .btn-buy {
+      background: linear-gradient(135deg, #f97316 0%, #a855f7 100%);
+      background-size: 200% auto;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 11px 22px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: transform 0.2s, box-shadow 0.2s, background-position 0.4s;
+      box-shadow: 0 4px 14px rgba(249, 115, 22, 0.3);
+    }
+
+    .btn-buy:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+      background-position: right center;
+    }
+
+    .btn-buy:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 18px;
+      animation: fadeUp 0.5s ease-out 0.45s both;
+    }
+
+    @media (max-width: 560px) {
+      .features { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .feature-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 10px;
+      text-align: center;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+      border-color: #c7d2fe;
+    }
+
+    .feature-icon {
       width: 36px;
       height: 36px;
-      background: #1c1729;
-      border-radius: 50%;
+      margin: 0 auto 8px;
+      border-radius: 10px;
+      background: #f0f4ff;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.1rem;
-      transition: transform 0.2s;
+      transition: transform 0.3s;
     }
 
-    .payment-icons span:hover {
+    .feature-card:hover .feature-icon {
       transform: scale(1.15);
     }
 
-    /* Decorative glow */
-    .glow {
-      position: absolute;
-      width: 220px;
-      height: 220px;
-      background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
-      top: -70px;
-      right: -50px;
-      pointer-events: none;
-      animation: glowMove 8s ease-in-out infinite alternate;
+    .feature-card h4 {
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-bottom: 2px;
     }
 
-    @keyframes glowMove {
-      from { transform: translate(0, 0); }
-      to { transform: translate(-20px, 15px); }
+    .feature-card p {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    .testimonials {
+      margin-top: 20px;
+      animation: fadeUp 0.5s ease-out 0.55s both;
+    }
+
+    .testimonials h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .testimonial-card {
+      background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%);
+      border: 1px solid #bfdbfe;
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      transition: box-shadow 0.25s;
+    }
+
+    .testimonial-card:hover {
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.1);
+    }
+
+    .stars {
+      color: #f59e0b;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .testimonial-card blockquote {
+      font-size: 0.875rem;
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .testimonial-card cite {
+      font-size: 0.78rem;
+      color: var(--blue);
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    footer {
+      margin-top: 40px;
+      background: #1a1a2e;
+      color: #9ca3af;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.75rem;
+      animation: fadeIn 0.6s ease-out 0.6s both;
+    }
+
+    footer p + p {
+      margin-top: 4px;
+      color: #6b7280;
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <div class="logo-icon">VIP</div>
-      <span>Premium Membership</span>
-    </div>
-    <button class="sign-in">Sign in</button>
-  </header>
-
   <div class="container">
-    <!-- Left Panel -->
-    <div class="left-panel">
-      <div class="created-by">
-        <div class="icon">VIP</div>
-        <div class="text">
-          <small>Created by</small>
-          <strong>Premium Membership</strong>
+    <header>
+      <div class="logo">VIP <span>Premium Member</span></div>
+      <div class="secure-badge">🔒 100% Secure Checkout</div>
+    </header>
+
+    <div class="trust-row">
+      <span class="trust-pill">🔒 256-bit SSL</span>
+      <span class="trust-pill">⚡ Instant Access</span>
+      <span class="trust-pill">✓ Verified Creator</span>
+      <span class="trust-pill">🇮🇳 India Trusted</span>
+      <span class="trust-pill">💬 24/7 Support</span>
+      <span class="plans-available">3 Plans Available</span>
+    </div>
+
+    <div class="main-grid">
+      <div class="left-panel">
+        <div class="hero-card">
+          <div class="created-by">✓ CREATED BY</div>
+          <div class="vip-circle">
+            <span class="vip-label">VIP Premium<br>Membership</span>
+          </div>
+          <span class="edu-tag">🎓 Education</span>
+          <div class="live-members">
+            <span class="live-dot"></span>
+            LIVE MEMBERS
+            <strong>6,960</strong>
+          </div>
+        </div>
+
+        <div class="desc-card">
+          <h3>Description</h3>
+          <h4>Disclaimer</h4>
+          <p>
+            Join our exclusive VIP Membership to unlock premium features, expert insights, and high-value content designed to help you grow faster and smarter.
+            <a href="#">Learn more</a>
+          </p>
+        </div>
+
+        <div class="payment-card">
+          <div class="label">Guaranteed <span class="safe">safe</span> and <span class="secure">secure</span> payment</div>
+          <div class="payment-icons">
+            <span class="pay-icon">MC</span>
+            <span class="pay-icon">Paytm</span>
+            <span class="pay-icon">GPay</span>
+            <span class="pay-icon">UPI</span>
+            <span class="pay-icon">MC</span>
+          </div>
         </div>
       </div>
 
-      <div class="section-title">About the offering</div>
-      <div class="tags">
-        <span class="tag">📚 Education</span>
-        <span class="tag">⚡ 3 Plans</span>
+      <div class="plans-section">
+        <div class="plans-header">
+          <h2>Choose Your Plan</h2>
+        </div>
+
+        <div class="plan-card">
+          <div class="plan-info">
+            <h3>1 Month</h3>
+            <div class="plan-price">₹2,999.00 <span>/ 1 Month</span></div>
+            <div class="plan-members">
+              <span class="dot"></span>
+              1,426 members active
+            </div>
+          </div>
+          <button class="btn-buy" onclick="window.location.href='https://onetapay.com/pp/MzIyMA=='">Buy Now</button>
+        </div>
+
+        <div class="plan-card">
+          <div class="plan-info">
+            <h3>Yearly Plan</h3>
+            <div class="plan-price">₹3,499.00 <span>/ 12 Months</span></div>
+            <div class="plan-members">
+              <span class="dot"></span>
+              1,113 members active
+            </div>
+          </div>
+          <button class="btn-buy" onclick="window.location.href='https://onetapay.com/pp/MzIyMQ=='">Buy Now</button>
+        </div>
+
+        <div class="plan-card popular">
+          <div class="popular-badge">★ MOST POPULAR</div>
+          <div class="plan-info">
+            <h3>Life Time</h3>
+            <div class="plan-price">₹4,599.00 <span>/ Life time</span></div>
+            <div class="plan-members">
+              <span class="dot"></span>
+              4,560 members active
+            </div>
+          </div>
+          <button class="btn-buy" onclick="window.location.href='https://onetapay.com/pp/MzIyMg=='">Buy Now</button>
+        </div>
+
+        <div class="features">
+          <div class="feature-card">
+            <div class="feature-icon">📈</div>
+            <h4>Live Signals</h4>
+            <p>Real-time alerts</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🎓</div>
+            <h4>Education</h4>
+            <p>Expert sessions</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">💬</div>
+            <h4>VIP Group</h4>
+            <p>Private Telegram</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h4>Secure Pay</h4>
+            <p>256-bit SSL</p>
+          </div>
+        </div>
+
+        <div class="testimonials">
+          <h3>What Members Say</h3>
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <blockquote>
+              "Education content is worth 10x the price. Went from a complete beginner to confidently trading in just 3 months!"
+            </blockquote>
+            <cite>— Priya S., Delhi</cite>
+          </div>
+        </div>
       </div>
-
-      <div class="disclaimer">
-        <h4>Disclaimer</h4>
-        <p>
-          Premium Membership shall not be held liable for any content or materials published, sold, or
-          distributed by content creators on our associated apps or websites. We do not endorse or
-          take responsibility for the accuracy, legality, or quality of their content. Users must exercise
-          their own judgment and discretion when relying on such content. All liability for any losses
-          or damages incurred is disclaimed. By using our services, you agree to these terms.
-        </p>
-        <p style="margin-top: 0.6rem;">
-          <a href="#">Learn more</a>
-        </p>
-      </div>
-    </div>
-
-    <!-- Right Panel -->
-    <div class="right-panel">
-      <div class="glow"></div>
-      
-      <div class="vip-badge">
-        <div class="vip">VIP</div>
-        <div class="sub">MEMBERS ONLY</div>
-      </div>
-
-      <h1>Premium Membership</h1>
-      <p class="subtitle">Select a plan and continue</p>
-
-      <div class="plans">
-        <!-- 1 Month -->
-        <a href="https://onetapay.com/pp/MzIyMA==" class="plan" target="_blank" rel="noopener">
-          <div class="left">
-            <div class="radio"></div>
-            <span class="name">1 Month</span>
-          </div>
-          <div class="price">
-            ₹2,999.00
-            <span class="arrow">→</span>
-          </div>
-        </a>
-
-        <!-- 3 Month -->
-        <a href="https://onetapay.com/pp/MzIyMQ==" class="plan" target="_blank" rel="noopener">
-          <div class="left">
-            <div class="radio"></div>
-            <span class="name">3 Month</span>
-          </div>
-          <div class="price">
-            ₹3,999.00
-            <span class="arrow">→</span>
-          </div>
-        </a>
-
-        <!-- Lifetime -->
-        <a href="https://onetapay.com/pp/MzIyMg==" class="plan" target="_blank" rel="noopener">
-          <div class="left">
-            <div class="radio"></div>
-            <span class="name">Lifetime</span>
-          </div>
-          <div class="price">
-            ₹4,999.00
-            <span class="arrow">→</span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <div class="secure">
-    Guaranteed safe & secure payment
-    <div class="payment-icons">
-      <span>💳</span>
-      <span>🔒</span>
-      <span>₹</span>
     </div>
   </div>
+
+  <footer>
+    <p>© 2026 VIP Membership. All rights reserved.</p>
+    <p>Join, learn, and grow with our exclusive VIP network.</p>
+  </footer>
 </body>
 </html>
